@@ -1,30 +1,6 @@
 # `mdunwrap`
 
-Remove unnecessary line breaks from Markdown, for readers whose viewer wraps text itself.
-
-If you prefer your Markdown viewer to soft-wrap paragraphs, hard-wrapped source is just noise. This tool joins the line breaks that exist only to wrap prose to a column width, and leaves every line break that carries meaning.
-
-## What it does and doesn't touch
-
-Joined:
-
-- Wrapped paragraph text
-- Wrapped list item text, keeping the marker and indentation
-- Wrapped text inside blockquotes, keeping the `>` prefix
-- Wrapped setext heading text, footnote bodies, and definition descriptions
-
-Left exactly as they were:
-
-- Headings, thematic breaks, and blank lines
-- Separate list items, and nested lists
-- Table rows, including the header and delimiter rows
-- Fenced and indented code blocks, and multi-line code spans
-- HTML blocks and comments
-- YAML and TOML frontmatter
-- Explicit hard breaks: a line ending in two spaces or a backslash
-- `$$` math blocks, `:::note` admonitions, and `> [!NOTE]` alerts
-
-Blocks are located with [goldmark](https://github.com/yuin/goldmark), a CommonMark-compliant parser, so structure is recognized properly rather than guessed at with regular expressions. The result is then rendered and compared against the input, and any join that would have changed the rendered output is discarded. Everything outside the joins is copied through byte for byte, and running the tool twice produces the same result as running it once.
+Remove unnecessary line breaks from Markdown text, for readers prefer to let their Markdown viewer soft-wrap text.
 
 ## Usage
 
@@ -115,6 +91,28 @@ git clone https://github.com/cdzombak/mdunwrap.git
 cd mdunwrap
 go build -ldflags="-X main.version=$(./.version.sh)" -o /usr/local/bin/mdunwrap .
 ```
+
+## What it does
+
+`mdunwrap` joins lines in:
+
+- Wrapped paragraph text
+- Wrapped list item text (keeping the marker and indentation)
+- Wrapped text inside blockquotes (keeping the `>` prefix)
+- Wrapped setext heading text, footnote bodies, and definition descriptions
+
+It leaves exactly as-is:
+
+- Headings, thematic breaks, and blank lines
+- Separate list items, and nested lists
+- Table rows, including the header and delimiter rows
+- Fenced and indented code blocks, and multi-line code spans
+- HTML blocks and comments
+- YAML and TOML frontmatter
+- Explicit hard breaks: a line ending in two spaces or a backslash
+- `$$` math blocks, `:::note` admonitions, and `> [!NOTE]` alerts
+
+Blocks are located with [goldmark](https://github.com/yuin/goldmark), a CommonMark-compliant parser. The result is then rendered and compared against the input, and any join that would have changed the rendered output is discarded. Everything outside the joins is copied through byte for byte, and running `mdunwrap` twice produces the same result as running it once.
 
 ## License
 
