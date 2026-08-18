@@ -23,8 +23,8 @@ func usage() {
 	fmt.Fprintln(os.Stderr, "Options:")
 	flag.PrintDefaults()
 	fmt.Fprintln(os.Stderr, "")
-	fmt.Fprintln(os.Stderr, "Either -in (or a bare filename) or -in-place is required. A path of '-' means stdin/stdout;")
-	fmt.Fprintln(os.Stderr, "-out defaults to stdout. -in-place cannot be combined with -in or -out.")
+	fmt.Fprintln(os.Stderr, "-in defaults to stdin (and a bare filename is equivalent to -in); -out defaults to stdout.")
+	fmt.Fprintln(os.Stderr, "A path of '-' means stdin/stdout. -in-place cannot be combined with -in or -out.")
 	fmt.Fprintln(os.Stderr, "")
 	fmt.Fprintln(os.Stderr, "Only line breaks that soft-wrap prose are removed. Headings, list items, table rows, code")
 	fmt.Fprintln(os.Stderr, "blocks, HTML blocks, frontmatter, and explicit hard breaks (a line ending in two spaces or")
@@ -88,8 +88,7 @@ func resolvePaths(inPath, outPath, inPlace string) (in, out string) {
 	case inPath != "":
 		in = inPath
 	default:
-		usage()
-		os.Exit(1)
+		in = "-"
 	}
 
 	out = outPath

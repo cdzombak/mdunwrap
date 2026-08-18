@@ -8,11 +8,9 @@ Remove unnecessary line breaks from Markdown text, for readers prefer to let the
 mdunwrap [options] [file]
 ```
 
-Either an input (`-in`, or a bare filename) or `-in-place` is required.
-
 ### Arguments
 
-- `-in`: Path to the input file, or `-` for stdin.
+- `-in`: Path to the input file, or `-` for stdin. Defaults to stdin.
 - `-out`: Path to the output file, or `-` for stdout. Defaults to stdout.
 - `-in-place`: Path to a file which is read, used as input, and replaced by the output. Cannot be combined with `-in` or `-out`.
 - `-force`: Allow `-out` to overwrite an existing file. Without it, writing to a path that already exists is an error.
@@ -43,7 +41,7 @@ $ mdunwrap -in-place notes.md
 Read from a pipe:
 
 ```text
-$ pbpaste | mdunwrap -in - | pbcopy
+$ pbpaste | mdunwrap | pbcopy
 ```
 
 Write to a new file, refusing to clobber it:
