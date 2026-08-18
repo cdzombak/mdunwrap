@@ -146,7 +146,7 @@ func writeResult(path string, result []byte, force bool) error {
 		return fmt.Errorf("opening %s: %w", path, err)
 	}
 	if _, err := f.Write(result); err != nil {
-		f.Close()
+		_ = f.Close()
 		return fmt.Errorf("writing %s: %w", path, err)
 	}
 	if err := f.Close(); err != nil {
@@ -181,10 +181,10 @@ func rewriteInPlace(path string) error {
 		return fmt.Errorf("creating temporary file: %w", err)
 	}
 	tmpName := tmp.Name()
-	defer os.Remove(tmpName) // no-op once the rename succeeds
+	defer func() { _ = os.Remove(tmpName) }() // no-op once the rename succeeds
 
 	if _, err := tmp.Write(result); err != nil {
-		tmp.Close()
+		_ = tmp.Close()
 		return fmt.Errorf("writing temporary file: %w", err)
 	}
 	if err := tmp.Close(); err != nil {
