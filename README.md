@@ -1,4 +1,4 @@
-# `md-hardbreak-remover`
+# `mdunwrap`
 
 Remove unnecessary line breaks from Markdown, for readers whose viewer wraps text itself.
 
@@ -29,7 +29,7 @@ Blocks are located with [goldmark](https://github.com/yuin/goldmark), a CommonMa
 ## Usage
 
 ```text
-md-hardbreak-remover [options] [file]
+mdunwrap [options] [file]
 ```
 
 Either an input (`-in`, or a bare filename) or `-in-place` is required.
@@ -52,7 +52,7 @@ A single bare filename argument is equivalent to `-in`.
 Unwrap a file to stdout:
 
 ```text
-$ md-hardbreak-remover notes.md
+$ mdunwrap notes.md
 # Notes
 
 This paragraph was hard-wrapped in the source and is now a single line.
@@ -61,22 +61,22 @@ This paragraph was hard-wrapped in the source and is now a single line.
 Rewrite a file in place:
 
 ```text
-$ md-hardbreak-remover -in-place notes.md
+$ mdunwrap -in-place notes.md
 ```
 
 Read from a pipe:
 
 ```text
-$ pbpaste | md-hardbreak-remover -in - | pbcopy
+$ pbpaste | mdunwrap -in - | pbcopy
 ```
 
 Write to a new file, refusing to clobber it:
 
 ```text
-$ md-hardbreak-remover -in notes.md -out wrapped.md
-$ md-hardbreak-remover -in notes.md -out wrapped.md
+$ mdunwrap -in notes.md -out wrapped.md
+$ mdunwrap -in notes.md -out wrapped.md
 wrapped.md already exists; pass -force to overwrite it
-$ md-hardbreak-remover -in notes.md -out wrapped.md -force
+$ mdunwrap -in notes.md -out wrapped.md -force
 ```
 
 ## Installation
@@ -84,7 +84,7 @@ $ md-hardbreak-remover -in notes.md -out wrapped.md -force
 ### macOS via Homebrew
 
 ```shell
-brew install cdzombak/oss/md-hardbreak-remover
+brew install cdzombak/oss/mdunwrap
 ```
 
 ### Debian/Ubuntu and derivatives, via apt repository
@@ -100,10 +100,10 @@ echo -e "deb [signed-by=/etc/apt/keyrings/dist-cdzombak-net.gpg] https://dist.cd
 sudo apt-get update
 ```
 
-Then install `md-hardbreak-remover` via `apt-get`:
+Then install `mdunwrap` via `apt-get`:
 
 ```shell
-sudo apt-get install md-hardbreak-remover
+sudo apt-get install mdunwrap
 ```
 
 ### From source
@@ -111,9 +111,9 @@ sudo apt-get install md-hardbreak-remover
 A working Go installation is required.
 
 ```shell
-git clone https://github.com/cdzombak/md-hardbreak-remover.git
-cd md-hardbreak-remover
-go build -ldflags="-X main.version=$(./.version.sh)" -o /usr/local/bin/md-hardbreak-remover .
+git clone https://github.com/cdzombak/mdunwrap.git
+cd mdunwrap
+go build -ldflags="-X main.version=$(./.version.sh)" -o /usr/local/bin/mdunwrap .
 ```
 
 ## License

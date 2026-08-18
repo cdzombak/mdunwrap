@@ -1,6 +1,6 @@
 -s dir
---name md-hardbreak-remover
+--name mdunwrap
 --description "Remove unnecessary line breaks from Markdown"
---url "https://github.com/cdzombak/md-hardbreak-remover"
+--url "https://github.com/cdzombak/mdunwrap"
 --maintainer "Chris Dzombak <https://www.dzombak.com>"
 --license Apache-2.0

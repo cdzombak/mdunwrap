@@ -1,6 +1,6 @@
 SHELL:=/usr/bin/env bash
 # nb. homebrew-releaser assumes the program name is == the repository name
-BIN_NAME:=md-hardbreak-remover
+BIN_NAME:=mdunwrap
 BIN_VERSION:=$(shell ./.version.sh)
 
 default: help

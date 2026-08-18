@@ -13,12 +13,12 @@ var version = "<dev>"
 
 //goland:noinspection GoUnhandledErrorResult
 func usage() {
-	fmt.Fprintf(os.Stderr, "md-hardbreak-remover %s\n", version)
+	fmt.Fprintf(os.Stderr, "mdunwrap %s\n", version)
 	fmt.Fprintln(os.Stderr, "")
 	fmt.Fprintln(os.Stderr, "Remove unnecessary line breaks from Markdown, for readers whose viewer wraps text itself.")
 	fmt.Fprintln(os.Stderr, "")
 	fmt.Fprintln(os.Stderr, "Usage:")
-	fmt.Fprintln(os.Stderr, "  md-hardbreak-remover [options] [file]")
+	fmt.Fprintln(os.Stderr, "  mdunwrap [options] [file]")
 	fmt.Fprintln(os.Stderr, "")
 	fmt.Fprintln(os.Stderr, "Options:")
 	flag.PrintDefaults()
@@ -30,8 +30,8 @@ func usage() {
 	fmt.Fprintln(os.Stderr, "blocks, HTML blocks, frontmatter, and explicit hard breaks (a line ending in two spaces or")
 	fmt.Fprintln(os.Stderr, "a backslash) are left exactly as they were.")
 	fmt.Fprintln(os.Stderr, "")
-	fmt.Fprintln(os.Stderr, "md-hardbreak-remover is written by Chris Dzombak <https://www.dzombak.com> and licensed under the Apache-2.0 license.")
-	fmt.Fprintln(os.Stderr, "🌐 https://www.github.com/cdzombak/md-hardbreak-remover")
+	fmt.Fprintln(os.Stderr, "mdunwrap is written by Chris Dzombak <https://www.dzombak.com> and licensed under the Apache-2.0 license.")
+	fmt.Fprintln(os.Stderr, "🌐 https://www.github.com/cdzombak/mdunwrap")
 }
 
 func main() {
@@ -46,7 +46,7 @@ func main() {
 	flag.Parse()
 
 	if *printVersion {
-		fmt.Printf("md-hardbreak-remover %s\n", version)
+		fmt.Printf("mdunwrap %s\n", version)
 		os.Exit(0)
 	}
 

@@ -1,4 +1,4 @@
-module github.com/cdzombak/md-hardbreak-remover
+module github.com/cdzombak/mdunwrap
 
 go 1.26.3
 
