@@ -1,6 +1,6 @@
 # `mdunwrap`
 
-Remove unnecessary line breaks from Markdown text, for readers prefer to let their Markdown viewer soft-wrap text.
+Remove unnecessary line breaks from Markdown text, for readers who prefer to let their Markdown viewer soft-wrap text.
 
 ## Usage
 
